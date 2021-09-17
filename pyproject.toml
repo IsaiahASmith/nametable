@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "template_repo"
+name = "nametable"
 version = "0.1.0"
 description = ""
 authors = ["TheJoeSmo <joesmo.joesmo12@gmail.com>"]
