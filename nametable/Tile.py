@@ -43,5 +43,5 @@ class Tile:
         -----
         This method is meant primarily for NES styled Tiles.
         """
-        array = unpackbits(frombuffer(data, dtype=ubyte)).reshape((2, 8, 8))
+        array = unpackbits(frombuffer(data, dtype=ubyte)).reshape((2, Tile.HEIGHT, Tile.WIDTH))
         return cls.from_np_bits(array[0, :, :], array[1, :, :])
