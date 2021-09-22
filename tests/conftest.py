@@ -1,9 +1,12 @@
+from numpy.core.fromnumeric import repeat
 from pytest import fixture
+from itertools import product
 
 from numpy import array, ubyte
 from numpy.typing import NDArray
 
 from nametable.Tile import Tile
+from nametable.Pattern import Pattern
 
 
 TILE_BYTES = (
@@ -72,6 +75,10 @@ TILE_DATA = tuple(zip(TILE_BYTES, TILE_NDARRAYS))
 
 TILES: tuple[Tile, ...] = tuple(map(lambda bytes: Tile(bytes), TILE_BYTES))
 
+PATTERNS: tuple[Pattern, ...] = tuple(map(lambda tile: Pattern(tile), TILES))
+
+PATTERN_COMBOS: tuple[tuple[Pattern, ...], ...] = tuple(product(PATTERNS, repeat=2))
+
 
 @fixture(params=TILE_BYTES)
 def tile_bytes(request) -> tuple[bytes, ...]:
@@ -133,3 +140,29 @@ def tile(request) -> Tile:
 
 
 tile_ = tile  # A copy as pytest does not let you copy fixtures otherwise.
+
+
+@fixture(params=PATTERNS)
+def pattern(request) -> Pattern:
+    """
+    Generates the Patterns commonly used for testing.
+
+    Returns
+    -------
+    Pattern
+        A Pattern used for testing.
+    """
+    return request.param
+
+
+@fixture(params=PATTERN_COMBOS)
+def pattern_combo(request) -> tuple[Pattern, ...]:
+    """
+    Generates an arrangement of Patterns used for testing.
+
+    Returns
+    -------
+    tuple[Pattern, ...]
+        An arrangement of Patterns used for testing.
+    """
+    return request.param
