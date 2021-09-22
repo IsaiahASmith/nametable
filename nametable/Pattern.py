@@ -12,6 +12,10 @@ class PatternProtocol(Protocol):
     def tile(self) -> Tile:
         ...
 
+    @property
+    def numpy_array(self) -> NDArray[ubyte]:
+        ...
+
 
 class Pattern:
     _patterns = WeakKeyDictionary()
