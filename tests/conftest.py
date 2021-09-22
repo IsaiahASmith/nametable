@@ -3,6 +3,8 @@ from pytest import fixture
 from numpy import array, ubyte
 from numpy.typing import NDArray
 
+from nametable.Tile import Tile
+
 
 TILE_BYTES = (
     bytes.fromhex("41 C2 44 48 10 20 40 80 01 02 04 08 16 21 42 87"),
@@ -39,6 +41,8 @@ TILE_NDARRAYS = (
 )
 
 TILE_DATA = tuple(zip(TILE_BYTES, TILE_NDARRAYS))
+
+TILES: tuple[Tile, ...] = tuple(map(lambda bytes: Tile(bytes), TILE_BYTES))
 
 
 @fixture(params=TILE_BYTES)
@@ -85,3 +89,19 @@ def tile_data(request) -> tuple[tuple[bytes, NDArray[ubyte]], ...]:
         A tuple of the two merged together.
     """
     return request.param
+
+
+@fixture(params=TILES)
+def tile(request) -> Tile:
+    """
+    Generates the Tiles commonly used for testing.
+
+    Returns
+    -------
+    Tile
+        A Tile used for testing.
+    """
+    return request.param
+
+
+tile_ = tile  # A copy as pytest does not let you copy fixtures otherwise.
