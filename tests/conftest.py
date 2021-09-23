@@ -1,4 +1,3 @@
-from numpy.core.fromnumeric import repeat
 from pytest import fixture
 from itertools import product
 
@@ -7,6 +6,7 @@ from numpy.typing import NDArray
 
 from nametable.Tile import Tile
 from nametable.Pattern import Pattern
+from nametable.PatternStack import PatternStack
 
 
 TILE_BYTES = (
@@ -78,6 +78,8 @@ TILES: tuple[Tile, ...] = tuple(map(lambda bytes: Tile(bytes), TILE_BYTES))
 PATTERNS: tuple[Pattern, ...] = tuple(map(lambda tile: Pattern(tile), TILES))
 
 PATTERN_COMBOS: tuple[tuple[Pattern, ...], ...] = tuple(product(PATTERNS, repeat=2))
+
+ANIMATIONS: tuple[PatternStack, ...] = tuple(map(lambda pattern_combo: PatternStack(pattern_combo), PATTERN_COMBOS))
 
 
 @fixture(params=TILE_BYTES)
@@ -164,5 +166,18 @@ def pattern_combo(request) -> tuple[Pattern, ...]:
     -------
     tuple[Pattern, ...]
         An arrangement of Patterns used for testing.
+    """
+    return request.param
+
+
+@fixture(params=ANIMATIONS)
+def animation(request) -> PatternStack:
+    """
+    Generates a PatternStack commonly used for testing.
+
+    Returns
+    -------
+    PatternStack
+        A PatternStack commonly used for testing.
     """
     return request.param
