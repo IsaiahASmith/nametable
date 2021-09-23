@@ -15,6 +15,9 @@ class PatternAnimator:
         self.stack = stack
         self.frame = frame
 
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.stack}, {self.frame})"
+
     @property
     def numpy_array(self) -> NDArray[ubyte]:
         """

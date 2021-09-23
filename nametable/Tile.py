@@ -11,6 +11,9 @@ class Tile:
     WIDTH = 8
     HEIGHT = 8
 
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.data.hex()})"
+
     @property
     def numpy_array(self) -> NDArray[ubyte]:
         """

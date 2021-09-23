@@ -39,6 +39,9 @@ class Pattern:
         self._tile = tile
         self._numpy_array = None
 
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self._tile})"
+
     @property
     def numpy_array(self) -> NDArray[ubyte]:
         """
