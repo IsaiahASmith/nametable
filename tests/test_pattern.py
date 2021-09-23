@@ -6,6 +6,8 @@ def test_initialization(tile):
 
 
 def test_only_store_one_copy(tile, tile_):
+    Pattern._patterns.clear()
+
     pattern_0, pattern_1 = Pattern(tile), Pattern(tile_)
     if tile == tile_:
         assert pattern_0 is pattern_1
