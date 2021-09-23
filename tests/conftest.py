@@ -1,5 +1,4 @@
 from pytest import fixture
-from itertools import product
 
 from numpy import array, ubyte
 from numpy.typing import NDArray
