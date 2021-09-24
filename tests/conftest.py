@@ -133,3 +133,13 @@ def animation(pattern_combo):
     from nametable.PatternStack import PatternStack
 
     return PatternStack(pattern_combo)
+
+
+@fixture(params=[f"Pattern Array {index}" for index in range(16)])
+def pattern_array():
+    from os import urandom
+    from random import randint
+
+    from nametable.PatternTable import PatternArray
+
+    return PatternArray(urandom(0x10 * randint(0, 0x10)))
