@@ -1,22 +1,23 @@
+from typing import Protocol
+from dataclasses import dataclass
+
 from numpy import ubyte
 from numpy.typing import NDArray
 
 from nametable.Tile import Tile
+from nametable.Animator import AnimatedProtocol, AnimatorProtocol
 from nametable.Pattern import PatternProtocol
 from nametable.PatternStack import PatternStackProtocol
 
 
-class PatternAnimatorProtocol(PatternProtocol):
-    frame: int
+class PatternAnimatorProtocol(PatternProtocol, AnimatedProtocol, Protocol):
+    pass
 
 
-class PatternAnimator:
-    def __init__(self, stack: PatternStackProtocol, frame: int = 0):
-        self.stack = stack
-        self.frame = frame
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.stack}, {self.frame})"
+@dataclass
+class PatternAnimated:
+    stack: PatternStackProtocol
+    animator: AnimatorProtocol
 
     @property
     def numpy_array(self) -> NDArray[ubyte]:
@@ -28,7 +29,7 @@ class PatternAnimator:
         NDArray[ubyte]
             The Tile represented as an array.
         """
-        return self.stack[self.frame].numpy_array
+        return self.stack[self.animator.frame].numpy_array
 
     @property
     def tile(self) -> Tile:
@@ -40,4 +41,4 @@ class PatternAnimator:
         Tile
             The Tile the Pattern represents.
         """
-        return self.stack[self.frame].tile
+        return self.stack[self.animator.frame].tile

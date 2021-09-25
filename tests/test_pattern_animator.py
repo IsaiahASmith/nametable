@@ -1,13 +1,12 @@
-from nametable.PatternAnimator import PatternAnimator
+from nametable.PatternAnimated import PatternAnimated
 
 
-def test_initialization(animation):
-    PatternAnimator(animation)
-    PatternAnimator(animation, len(animation))
+def test_initialization(animation, animator):
+    PatternAnimated(animation, animator)
 
 
-def test_is_same(animation):
-    animator = PatternAnimator(animation)
+def test_is_same(animation, animator):
+    pattern = PatternAnimated(animation, animator)
     for i in range(len(animation)):
-        animator.frame = i
-        assert animator.tile == animation[i].tile
+        pattern.animator.frame = i
+        assert pattern.tile == animation[i].tile

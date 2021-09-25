@@ -129,6 +129,13 @@ def pattern_combo(_pattern_combinations):
 
 
 @fixture
+def animator():
+    from nametable.Animator import Animator
+
+    return Animator(0)
+
+
+@fixture
 def animation(pattern_combo):
     from nametable.PatternStack import PatternStack
 
