@@ -1,5 +1,5 @@
 from hypothesis import given
-from hypothesis.strategies import binary
+from hypothesis.strategies import binary, lists
 
 from numpy import array_equal
 
@@ -31,6 +31,15 @@ def test_equality_cannot_be_not_equal(pattern_meta, pattern_meta_):
 @given(pattern_meta())
 def test_conversion(pattern_meta):
     assert pattern_meta == PatternMeta.from_numpy_array(pattern_meta.numpy_array)
+
+
+@given(lists(pattern_meta()))
+def test_hash(pattern_metas):
+    d = {}
+    for pattern_meta in pattern_metas:
+        if pattern_meta in d:
+            assert d[pattern_meta] == pattern_meta
+        d.update({pattern_meta: pattern_meta})
 
 
 @given(pattern_meta())
