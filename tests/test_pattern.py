@@ -1,15 +1,27 @@
+from hypothesis import given
+
 from nametable.Pattern import Pattern
 
-
-def test_initialization(tile):
-    Pattern(tile)
+from tests.conftest import pattern_meta, pattern
 
 
-def test_only_store_one_copy(tile, tile_):
+@given(pattern_meta())
+def test_initialization(pattern_meta):
+    Pattern(pattern_meta)
+
+
+@given(pattern_meta())
+def test_one_copy_for_equality(pattern_meta):
     Pattern._patterns.clear()
 
-    pattern_0, pattern_1 = Pattern(tile), Pattern(tile_)
-    if tile == tile_:
-        assert pattern_0 is pattern_1
-    else:
-        assert pattern_0 is not pattern_1
+    assert Pattern(pattern_meta) is Pattern(pattern_meta)
+
+
+@given(pattern())
+def test_conversion(pattern):
+    assert pattern == Pattern.from_numpy_array(pattern.numpy_array)
+
+
+@given(pattern())
+def test_numpy_array_shape(pattern):
+    assert pattern.numpy_array.shape == (8, 8)

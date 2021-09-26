@@ -42,6 +42,18 @@ class Pattern:
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self._tile})"
 
+    @classmethod
+    def from_numpy_array(cls, array: NDArray[ubyte]):
+        """
+        Creates a Pattern from a numpy array of a size (8, 8).
+
+        Parameters
+        ----------
+        array : NDArray[ubyte]
+            The numpy array to be converted.
+        """
+        return cls(PatternMeta.from_numpy_array(array))
+
     @property
     def numpy_array(self) -> NDArray[ubyte]:
         """

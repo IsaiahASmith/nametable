@@ -12,6 +12,12 @@ def pattern_meta():
     return builds(PatternMeta, binary(min_size=16, max_size=16))
 
 
+def pattern():
+    from nametable.Pattern import Pattern
+
+    return builds(Pattern, pattern_meta())
+
+
 @fixture
 def _tile_data():
     def tile_data_generator():
@@ -106,13 +112,6 @@ def tile(_tile_data):
 
 
 tile_ = tile
-
-
-@fixture(scope="function")
-def pattern(tile):
-    from nametable.Pattern import Pattern
-
-    return Pattern(tile)
 
 
 @fixture(scope="function")
