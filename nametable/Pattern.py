@@ -4,12 +4,12 @@ from weakref import WeakKeyDictionary
 from numpy import ubyte
 from numpy.typing import NDArray
 
-from nametable.Tile import Tile
+from nametable.PatternMeta import PatternMeta
 
 
 class PatternProtocol(Protocol):
     @property
-    def tile(self) -> Tile:
+    def tile(self) -> PatternMeta:
         ...
 
     @property
@@ -20,14 +20,14 @@ class PatternProtocol(Protocol):
 class Pattern:
     _patterns = WeakKeyDictionary()
 
-    def __new__(cls, tile: Tile, *args, **kwargs):
+    def __new__(cls, tile: PatternMeta, *args, **kwargs):
         """
         As Tiles will often be copied and are immutable, this method ensures that only
         a single copy will be stored inside memory.
 
         Parameters
         ----------
-        tile : Tile
+        tile : PatternMeta
             The Tile to be hashed.
         """
         if tile not in cls._patterns:
@@ -35,7 +35,7 @@ class Pattern:
             cls._patterns[tile] = instance
         return cls._patterns[tile]
 
-    def __init__(self, tile: Tile):
+    def __init__(self, tile: PatternMeta):
         self._tile = tile
         self._numpy_array = None
 
@@ -62,7 +62,7 @@ class Pattern:
         return self._numpy_array
 
     @property
-    def tile(self) -> Tile:
+    def tile(self) -> PatternMeta:
         """
         Returns the Tile the Pattern represents.
 

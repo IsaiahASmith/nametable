@@ -5,7 +5,7 @@ from collections.abc import Iterable
 from numpy import array, object_
 from numpy.typing import NDArray
 
-from nametable.Tile import Tile
+from nametable.PatternMeta import PatternMeta
 from nametable.Pattern import Pattern, PatternProtocol
 
 
@@ -17,14 +17,14 @@ class PatternArray:
         return len(self.data) // 0x10
 
     def __getitem__(self, index: int) -> PatternProtocol:
-        return Pattern(Tile(self.data[index * 0x10 : (index + 1) * 0x10]))
+        return Pattern(PatternMeta(self.data[index * 0x10 : (index + 1) * 0x10]))
 
     def __iter__(self) -> Iterable[PatternProtocol]:
         def iterator():
             data = self.data
             while len(data):
                 next_pattern, data = data[:0x10], data[0x10:]
-                yield Pattern(Tile(next_pattern))
+                yield Pattern(PatternMeta(next_pattern))
 
         return iterator()
 

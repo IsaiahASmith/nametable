@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from numpy import ubyte
 from numpy.typing import NDArray
 
-from nametable.Tile import Tile
+from nametable.PatternMeta import PatternMeta
 from nametable.Animator import AnimatedProtocol, AnimatorProtocol
 from nametable.Pattern import PatternProtocol
 from nametable.PatternStack import PatternStackProtocol
@@ -32,7 +32,7 @@ class PatternAnimated:
         return self.stack[self.animator.frame].numpy_array
 
     @property
-    def tile(self) -> Tile:
+    def tile(self) -> PatternMeta:
         """
         Returns the Tile the Pattern represents.
 

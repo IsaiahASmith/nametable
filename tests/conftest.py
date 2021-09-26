@@ -93,9 +93,9 @@ def tile_ndarray(_tile_data) -> tuple[NDArray[ubyte], ...]:
 
 @fixture(params=[f"Tile {index}" for index in range(4)])
 def tile(_tile_data):
-    from nametable.Tile import Tile
+    from nametable.PatternMeta import PatternMeta
 
-    return Tile(next(_tile_data)["data"])
+    return PatternMeta(next(_tile_data)["data"])
 
 
 tile_ = tile
@@ -114,10 +114,10 @@ def _pattern_combinations():
         from os import urandom
         from random import randint
 
-        from nametable.Tile import Tile
+        from nametable.PatternMeta import PatternMeta
         from nametable.Pattern import Pattern
 
-        for combo in product(map(lambda data: Pattern(Tile(data)), [urandom(0x10) for _ in range(0x10)])):
+        for combo in product(map(lambda data: Pattern(PatternMeta(data)), [urandom(0x10) for _ in range(0x10)])):
             yield combo[: randint(1, 0x10)]
 
     return create_pattern_combinations()
