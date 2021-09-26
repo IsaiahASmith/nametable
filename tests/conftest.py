@@ -1,8 +1,15 @@
 from pytest import fixture
+from hypothesis.strategies import builds, binary
 from itertools import product
 
 from numpy import array, ubyte
 from numpy.typing import NDArray
+
+
+def pattern_meta():
+    from nametable.PatternMeta import PatternMeta
+
+    return builds(PatternMeta, binary(min_size=16, max_size=16))
 
 
 @fixture

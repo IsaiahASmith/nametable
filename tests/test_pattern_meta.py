@@ -3,6 +3,8 @@ from hypothesis.strategies import binary
 
 from numpy import array_equal
 
+from tests.conftest import pattern_meta
+
 from nametable.PatternMeta import PatternMeta
 
 
@@ -11,29 +13,29 @@ def test_initialization(bytes):
     PatternMeta(bytes)
 
 
-@given(binary(min_size=16, max_size=16), binary(min_size=16, max_size=16))
-def test_equality(bytes, bytes_):
-    assert (PatternMeta(bytes) == PatternMeta(bytes_)) == (list(bytes) == list(bytes_))
+@given(pattern_meta(), pattern_meta())
+def test_equality(pattern_meta, pattern_meta_):
+    assert (pattern_meta == pattern_meta_) == (list(pattern_meta.data) == list(pattern_meta_.data))
 
 
-@given(binary(min_size=16, max_size=16), binary(min_size=16, max_size=16))
-def test_inequality(bytes, bytes_):
-    assert (PatternMeta(bytes) != PatternMeta(bytes_)) == (list(bytes) != list(bytes_))
+@given(pattern_meta(), pattern_meta())
+def test_inequality(pattern_meta, pattern_meta_):
+    assert (pattern_meta != pattern_meta_) == (list(pattern_meta.data) != list(pattern_meta_.data))
 
 
-@given(binary(min_size=16, max_size=16), binary(min_size=16, max_size=16))
-def test_equality_cannot_be_not_equal(bytes, bytes_):
-    assert (PatternMeta(bytes) == PatternMeta(bytes_)) != (PatternMeta(bytes) != PatternMeta(bytes_))
+@given(pattern_meta(), pattern_meta())
+def test_equality_cannot_be_not_equal(pattern_meta, pattern_meta_):
+    assert (pattern_meta == pattern_meta_) != (pattern_meta.data != pattern_meta_.data)
 
 
-@given(binary(min_size=16, max_size=16))
-def test_conversion(bytes):
-    assert PatternMeta(bytes) == PatternMeta.from_numpy_array(PatternMeta(bytes).numpy_array)
+@given(pattern_meta())
+def test_conversion(pattern_meta):
+    assert pattern_meta == PatternMeta.from_numpy_array(pattern_meta.numpy_array)
 
 
-@given(binary(min_size=16, max_size=16))
-def test_numpy_array_shape(bytes):
-    assert PatternMeta(bytes).numpy_array.shape == (8, 8)
+@given(pattern_meta())
+def test_numpy_array_shape(pattern_meta):
+    assert pattern_meta.numpy_array.shape == (8, 8)
 
 
 def test_bytes_conversion(tile_data):
