@@ -1,5 +1,5 @@
 from pytest import fixture
-from hypothesis.strategies import builds, binary
+from hypothesis.strategies import builds, binary, tuples
 from itertools import product
 
 from numpy import array, ubyte
@@ -16,6 +16,12 @@ def pattern():
     from nametable.Pattern import Pattern
 
     return builds(Pattern, pattern_meta())
+
+
+def pattern_stack():
+    from nametable.PatternStack import PatternStack
+
+    return builds(PatternStack, tuples(pattern()))
 
 
 @fixture
