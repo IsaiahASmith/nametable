@@ -57,6 +57,22 @@ def pattern_table(min_size: int = 0, max_size: Optional[int] = None):
     return builds(PatternTable, pattern_array(min_size=min_size, max_size=max_size))
 
 
+@composite
+def pattern_table_animated_tuple(draw, min_size: int = 0, max_size: Optional[int] = None):
+    tables = draw(lists(pattern_table(), min_size=min_size, max_size=max_size))
+    ani = draw(animator(max_frame=len(tables)))
+    return tables, ani
+
+
+@composite
+def pattern_table_animated(draw, min_frames: int = 0, max_frames: Optional[int] = None):
+    from nametable.PatternTableAnimated import PatternTableAnimated
+
+    tables, animator = draw(pattern_table_animated_tuple(min_size=min_frames, max_size=max_frames))
+
+    return PatternTableAnimated(tables, animator)
+
+
 @fixture
 def _tile_data():
     def tile_data_generator():
