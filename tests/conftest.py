@@ -47,6 +47,23 @@ def pattern_animated(draw, min_frames: int = 0, max_frames: Optional[int] = None
     return PatternAnimated(stack, animator)
 
 
+def pattern_array(min_size: int = 0, max_size: Optional[int] = None):
+    from nametable.PatternTable import PatternArray
+
+    return builds(
+        PatternArray,
+        binary(min_size=min_size * 8, max_size=None if max_size is None else max_size * 8).filter(
+            lambda b: (len(b) % 8) == 0
+        ),
+    )
+
+
+def pattern_table(min_size: int = 0, max_size: Optional[int] = None):
+    from nametable.PatternTable import PatternTable
+
+    return builds(PatternTable, pattern_array(min_size=min_size, max_size=max_size))
+
+
 @fixture
 def _tile_data():
     def tile_data_generator():
@@ -121,53 +138,3 @@ def _tile_data():
 @fixture(params=[f"Tile Data {index}" for index in range(4)])
 def tile_data(_tile_data) -> tuple[tuple[bytes, NDArray[ubyte]], ...]:
     return next(_tile_data)
-
-
-@fixture(params=[f"Tile Bytes {index}" for index in range(4)])
-def tile_bytes(_tile_data) -> tuple[bytes, ...]:
-    return next(_tile_data)["data"]
-
-
-@fixture(params=[f"Tile NDArray {index}" for index in range(4)])
-def tile_ndarray(_tile_data) -> tuple[NDArray[ubyte], ...]:
-    return next(_tile_data)["numpy"]
-
-
-@fixture(params=[f"Tile {index}" for index in range(4)])
-def tile(_tile_data):
-    from nametable.PatternMeta import PatternMeta
-
-    return PatternMeta(next(_tile_data)["data"])
-
-
-tile_ = tile
-
-
-@fixture(scope="function")
-def _pattern_combinations():
-    def create_pattern_combinations():
-        from os import urandom
-        from random import randint
-
-        from nametable.PatternMeta import PatternMeta
-        from nametable.Pattern import Pattern
-
-        for combo in product(map(lambda data: Pattern(PatternMeta(data)), [urandom(0x10) for _ in range(0x10)])):
-            yield combo[: randint(1, 0x10)]
-
-    return create_pattern_combinations()
-
-
-@fixture(params=([f"Pattern Combination {index}" for index in range(64)]))
-def pattern_combo(_pattern_combinations):
-    return next(_pattern_combinations)
-
-
-@fixture(params=[f"Pattern Array {index}" for index in range(16)])
-def pattern_array():
-    from os import urandom
-    from random import randint
-
-    from nametable.PatternTable import PatternArray
-
-    return PatternArray(urandom(0x10 * randint(0, 0x10)))
