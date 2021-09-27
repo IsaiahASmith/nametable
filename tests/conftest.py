@@ -1,5 +1,6 @@
+from typing import Optional
 from pytest import fixture
-from hypothesis.strategies import builds, binary, tuples
+from hypothesis.strategies import builds, binary, integers, lists, composite
 from itertools import product
 
 from numpy import array, ubyte
@@ -18,10 +19,32 @@ def pattern():
     return builds(Pattern, pattern_meta())
 
 
-def pattern_stack():
+def pattern_stack(min_size: int = 0, max_size: Optional[int] = None):
     from nametable.PatternStack import PatternStack
 
-    return builds(PatternStack, tuples(pattern()))
+    return builds(PatternStack, lists(pattern(), min_size=min_size, max_size=max_size))
+
+
+def animator(min_frame: int = 0, max_frame: Optional[int] = None):
+    from nametable.Animator import Animator
+
+    return builds(Animator, integers(min_value=min_frame, max_value=max_frame))
+
+
+@composite
+def pattern_animated_tuple(draw, min_size: int = 0, max_size: Optional[int] = None):
+    stack = draw(pattern_stack(min_size=min_size, max_size=max_size))
+    ani = draw(animator(max_frame=len(stack)))
+    return stack, ani
+
+
+@composite
+def pattern_animated(draw, min_frames: int = 0, max_frames: Optional[int] = None):
+    from nametable.PatternAnimated import PatternAnimated
+
+    stack, animator = draw(pattern_animated_tuple(min_size=min_frames, max_size=max_frames))
+
+    return PatternAnimated(stack, animator)
 
 
 @fixture
@@ -138,20 +161,6 @@ def _pattern_combinations():
 @fixture(params=([f"Pattern Combination {index}" for index in range(64)]))
 def pattern_combo(_pattern_combinations):
     return next(_pattern_combinations)
-
-
-@fixture
-def animator():
-    from nametable.Animator import Animator
-
-    return Animator(0)
-
-
-@fixture
-def animation(pattern_combo):
-    from nametable.PatternStack import PatternStack
-
-    return PatternStack(pattern_combo)
 
 
 @fixture(params=[f"Pattern Array {index}" for index in range(16)])
