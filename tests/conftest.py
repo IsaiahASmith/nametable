@@ -18,12 +18,6 @@ def pattern():
     return builds(Pattern, pattern_meta())
 
 
-def pattern_stack(min_size: int = 0, max_size: Optional[int] = None):
-    from nametable.PatternStack import PatternStack
-
-    return builds(PatternStack, lists(pattern(), min_size=min_size, max_size=max_size))
-
-
 def animator(min_frame: int = 0, max_frame: Optional[int] = None):
     from nametable.Animator import Animator
 
@@ -32,7 +26,7 @@ def animator(min_frame: int = 0, max_frame: Optional[int] = None):
 
 @composite
 def pattern_animated_tuple(draw, min_size: int = 0, max_size: Optional[int] = None):
-    stack = draw(pattern_stack(min_size=min_size, max_size=max_size))
+    stack = draw(lists(pattern(), min_size=min_size, max_size=max_size))
     ani = draw(animator(max_frame=len(stack)))
     return stack, ani
 

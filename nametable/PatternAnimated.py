@@ -7,7 +7,6 @@ from numpy.typing import NDArray
 from nametable.PatternMeta import PatternMeta
 from nametable.Animator import AnimatedProtocol, AnimatorProtocol
 from nametable.Pattern import PatternProtocol
-from nametable.PatternStack import PatternStackProtocol
 
 
 class PatternAnimatorProtocol(PatternProtocol, AnimatedProtocol, Protocol):
@@ -16,7 +15,7 @@ class PatternAnimatorProtocol(PatternProtocol, AnimatedProtocol, Protocol):
 
 @dataclass
 class PatternAnimated:
-    stack: PatternStackProtocol
+    stack: tuple[PatternProtocol]
     animator: AnimatorProtocol
 
     @property
