@@ -36,10 +36,10 @@ def test_conversion(pattern_meta):
 @given(lists(pattern_meta()))
 def test_hash(pattern_metas):
     d = {}
-    for pattern_meta in pattern_metas:
-        if pattern_meta in d:
-            assert d[pattern_meta] == pattern_meta
-        d.update({pattern_meta: pattern_meta})
+    for meta in pattern_metas:
+        if meta in d:
+            assert d[meta] == meta
+        d.update({meta: meta})
 
 
 @given(pattern_meta())
