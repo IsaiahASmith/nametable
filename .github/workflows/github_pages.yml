@@ -49,8 +49,8 @@ jobs:
       # Building documentation
       - name: Build Documentation
         run: |
-          sphinx-apidoc --no-toc --module-first -o docs/source nametable/
-          sphinx-build docs/source public -b dirhtml
+          poetry run sphinx-apidoc --no-toc --module-first -o docs/source nametable/
+          poetry run sphinx-build docs/source public -b dirhtml
 
       # Build and handle Github Pages
       - name: Deploy to Github Pages
