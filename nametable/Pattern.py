@@ -20,7 +20,7 @@ class PatternProtocol(Protocol):
 class Pattern:
     _patterns = WeakKeyDictionary()
 
-    def __new__(cls, tile: PatternMeta, *args, **kwargs):
+    def __new__(cls, tile: PatternMeta):
         """
         As Tiles will often be copied and are immutable, this method ensures that only
         a single copy will be stored inside memory.
@@ -31,7 +31,7 @@ class Pattern:
             The Tile to be hashed.
         """
         if tile not in cls._patterns:
-            instance = super().__new__(cls, *args, **kwargs)
+            instance = super().__new__(cls)
             cls._patterns[tile] = instance
         return cls._patterns[tile]
 
