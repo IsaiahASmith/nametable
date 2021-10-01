@@ -55,10 +55,9 @@ jobs:
       # Build and handle Github Pages
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v2.3.1
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PAT }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: public
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          public_dir: ./public
 
       # Upload the artifacts
       - uses: actions/upload-artifact@v1
