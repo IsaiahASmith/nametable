@@ -1,35 +1,15 @@
-name: Tests
+name: github pages
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - dev
 
 jobs:
-  linting:
-    runs-on: ubuntu-latest
-    steps:
-      # Check out the repo and set up python
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-
-      # Load pip if the cache exists
-      - uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip
-          restore-keys: ${{ runner.os }}-pip
-
-      # Install and run linters
-      - run: python -m pip install black flake8
-      - run: |
-          flake8 .  --max-line-length 120  --ignore=E203  --per-file-ignores="__init__.py:F401"
-          black . --check --line-length 120
-  test:
-    needs: linting
+  deploy:
     strategy:
-      fail-fast: true
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
         python-version: ["3.9.7"]
     defaults:
       run:
@@ -66,8 +46,21 @@ jobs:
       - name: Install library
         run: poetry install --no-interaction
 
-      # Run test suite
-      - name: Run tests
+      # Building documentation
+      - name: Build Documentation
         run: |
-          source $VENV
-          pytest tests/ --exitfirst --verbose --failed-first
+          poetry run sphinx-apidoc -o docs/source nametable/
+          poetry run sphinx-build docs/source public -b dirhtml
+
+      # Build and handle Github Pages
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          public_dir: ./public
+
+      # Upload the artifacts
+      - uses: actions/upload-artifact@v1
+        with:
+          name: documentation
+          path: public
