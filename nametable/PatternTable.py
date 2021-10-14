@@ -15,7 +15,7 @@ class PatternTableProtocol(Protocol):
         ...
 
 
-@dataclass
+@dataclass(frozen=True, eq=True)
 class PatternTable:
     pattern_array: tuple[Pattern]
 
