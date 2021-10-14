@@ -1,36 +1,14 @@
 from typing import Protocol, Optional
 from dataclasses import dataclass
-from collections.abc import Iterable
 
 from numpy import array, object_
 from numpy.typing import NDArray
 
-from nametable.PatternMeta import PatternMeta
 from nametable.Pattern import Pattern, PatternProtocol
 
 
-@dataclass(frozen=True, eq=True)
-class PatternArray:
-    data: bytes
-
-    def __len__(self) -> int:
-        return len(self.data) // 0x10
-
-    def __getitem__(self, index: int) -> PatternProtocol:
-        return Pattern(PatternMeta(self.data[index * 0x10 : (index + 1) * 0x10]))
-
-    def __iter__(self) -> Iterable[PatternProtocol]:
-        def iterator():
-            data = self.data
-            while len(data):
-                next_pattern, data = data[:0x10], data[0x10:]
-                yield Pattern(PatternMeta(next_pattern))
-
-        return iterator()
-
-
 class PatternTableProtocol(Protocol):
-    pattern_array: PatternArray
+    pattern_array: tuple[Pattern]
 
     @property
     def numpy_array(self) -> NDArray[object_]:
@@ -39,7 +17,7 @@ class PatternTableProtocol(Protocol):
 
 @dataclass
 class PatternTable:
-    pattern_array: PatternArray
+    pattern_array: tuple[Pattern]
 
     @property
     def numpy_array(self) -> NDArray[object_]:

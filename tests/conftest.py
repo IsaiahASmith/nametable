@@ -40,21 +40,18 @@ def pattern_animated(draw, min_frames: int = 0, max_frames: Optional[int] = None
     return PatternAnimated(stack, animator)
 
 
-def pattern_array(min_size: int = 0, max_size: Optional[int] = None):
-    from nametable.PatternTable import PatternArray
-
-    return builds(
-        PatternArray,
-        binary(min_size=min_size * 8, max_size=None if max_size is None else max_size * 8).filter(
-            lambda b: (len(b) % 8) == 0
-        ),
-    )
+@composite
+def pattern_array(draw, min_size: int = 0, max_size: Optional[int] = None):
+    return draw(lists(pattern(), min_size=min_size, max_size=max_size))
 
 
-def pattern_table(min_size: int = 0, max_size: Optional[int] = None):
+@composite
+def pattern_table(draw, min_size: int = 0, max_size: Optional[int] = None):
     from nametable.PatternTable import PatternTable
 
-    return builds(PatternTable, pattern_array(min_size=min_size, max_size=max_size))
+    array = draw(pattern_array(min_size=min_size, max_size=max_size))
+
+    return PatternTable(array)
 
 
 @composite
