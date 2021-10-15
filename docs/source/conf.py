@@ -53,6 +53,14 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# Specify order of items documented
+autodoc_default_options = {
+    "members": True,
+    "member-order": "alphabetical",
+    "undoc-members": True,
+    "exclude-members": "__weakref__",
+}
+
 # -- Options for Extensions --------------------------------------------------
 
 # The names and links to projects to reference.
