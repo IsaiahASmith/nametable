@@ -3,7 +3,7 @@ from .Animator import AnimatedProtocol as AnimatedProtocol
 from .Animator import Animator as Animator
 from .Pattern import PatternProtocol as PatternProtocol
 from .Pattern import Pattern as Pattern
-from .PatternAnimated import PatternAnimatorProtocol as PatternAnimatorProtocol
+from .PatternAnimated import PatternAnimatedProtocol as PatternAnimatedProtocol
 from .PatternAnimated import PatternAnimated as PatternAnimated
 from .PatternMeta import PatternMeta as PatternMeta
 from .PatternTable import PatternTableProtocol as PatternTableProtocol

@@ -9,7 +9,7 @@ from nametable.Animator import AnimatedProtocol, AnimatorProtocol
 from nametable.Pattern import PatternProtocol
 
 
-class PatternAnimatorProtocol(PatternProtocol, AnimatedProtocol, Protocol):
+class PatternAnimatedProtocol(PatternProtocol, AnimatedProtocol, Protocol):
     pass
 
 
