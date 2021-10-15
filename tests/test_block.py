@@ -22,3 +22,15 @@ def test_bad_reference_to_pattern_table(pattern_table):
         Block(pattern_table, (0, len(pattern_table.pattern_array) + 1, 0, 0))
     with raises(PatternTableIndexException):
         Block(pattern_table, (len(pattern_table.pattern_array) + 1, 0, 0, 0))
+
+
+@given(pattern_table())
+def test_negative_reference_to_pattern_table(pattern_table):
+    with raises(PatternTableIndexException):
+        Block(pattern_table, (0, 0, 0, -1))
+    with raises(PatternTableIndexException):
+        Block(pattern_table, (0, 0, -1, 0))
+    with raises(PatternTableIndexException):
+        Block(pattern_table, (0, -1, 0, 0))
+    with raises(PatternTableIndexException):
+        Block(pattern_table, (-1, 0, 0, 0))

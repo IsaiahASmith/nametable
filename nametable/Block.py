@@ -27,3 +27,5 @@ class Block:
             raise BlockInvalidSizeException(f"Block must only have four patterns, {len(self.patterns)} given")
         if any(pattern > (size := len(self.pattern_table.pattern_array)) for pattern in self.patterns):
             raise PatternTableIndexException(f"Invalid index to Pattern Table of size {size}")
+        if any(pattern < 0 for pattern in self.patterns):
+            raise PatternTableIndexException("Pattern indexes to Pattern Table must be positive")
