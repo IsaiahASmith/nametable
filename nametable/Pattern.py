@@ -8,13 +8,55 @@ from nametable.PatternMeta import PatternMeta
 
 
 class PatternProtocol(Protocol):
+    """
+    An `Object Oriented <https://en.wikipedia.org/wiki/Object-oriented_programming>`_
+    wrapper around :class:`~nametable.PatternMeta.PatternMeta`.
+    This class enables easier extensions and edits on
+    :class:`~nametable.PatternMeta.PatternMeta` without needing to understand the
+    internals of the NES.
+
+    See Also
+    --------
+    :class:`~nametable.PatternMeta.PatternMeta`
+    """
+
     @property
     def meta(self) -> PatternMeta:
-        ...
+        """
+        Provides the wrapped meta class that the instance is representing.
+
+        Returns
+        -------
+        PatternMeta
+            The current :class:`~nametable.PatternMeta.PatternMeta` that this instance
+            is representing.
+
+        See Also
+        --------
+        :class:`~nametable.PatternMeta.PatternMeta`
+        """
 
     @property
     def numpy_array(self) -> NDArray[ubyte]:
-        ...
+        """
+        Provides a Numpy array that represents the pattern as a 2D matrix of the pixels of
+        the pattern.
+
+        Returns
+        -------
+        NDArray[ubyte]
+            The array is equivalent to the meta that the instance is representing.
+
+        Notes
+        -----
+        The purpose of extending the responsibility of creating an array to this instance
+        is to provide additional ability to cache and utilize other techniques to
+        improve performance.
+
+        See Also
+        --------
+        :class:`~nametable.PatternMeta.PatternMeta`
+        """
 
 
 class Pattern:

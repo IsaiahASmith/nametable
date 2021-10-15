@@ -27,7 +27,7 @@ class PatternMeta:
 
     See Also
     --------
-    nametable.Pattern.Pattern
+    :class:`~nametable.Pattern.Pattern`
 
     Notes
     -----
