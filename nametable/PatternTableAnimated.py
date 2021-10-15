@@ -5,7 +5,8 @@ from numpy import object_
 from numpy.typing import NDArray
 
 from nametable.Animator import AnimatedProtocol, AnimatorProtocol
-from nametable.PatternTable import PatternTableProtocol, PatternArray
+from nametable.PatternTable import PatternTableProtocol
+from nametable.Pattern import Pattern
 
 
 class PatternTableAnimatedProtocol(PatternTableProtocol, AnimatedProtocol, Protocol):
@@ -18,7 +19,7 @@ class PatternTableAnimated:
     animator: AnimatorProtocol
 
     @property
-    def pattern_array(self) -> PatternArray:
+    def pattern_array(self) -> tuple[Pattern, ...]:
         return self.pattern_tables[self.animator.frame].pattern_array
 
     @property

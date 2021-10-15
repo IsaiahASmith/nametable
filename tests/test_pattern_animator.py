@@ -15,7 +15,7 @@ def test_initialization(data):
 def test_animation(pattern_animated):
     for frame in range(len(pattern_animated.stack)):
         pattern_animated.animator.frame = frame
-        assert pattern_animated.tile == pattern_animated.stack[frame].tile
+        assert pattern_animated.meta == pattern_animated.stack[frame].meta
 
 
 @given(pattern_animated())

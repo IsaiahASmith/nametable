@@ -47,5 +47,5 @@ def test_numpy_array_shape(pattern_meta):
     assert pattern_meta.numpy_array.shape == (8, 8)
 
 
-def test_bytes_conversion(tile_data):
-    assert array_equal(PatternMeta(tile_data["data"]).numpy_array, tile_data["numpy"])
+def test_bytes_conversion(pattern_data):
+    assert array_equal(PatternMeta(pattern_data["data"]).numpy_array, pattern_data["numpy"])

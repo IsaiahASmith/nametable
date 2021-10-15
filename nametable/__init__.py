@@ -6,7 +6,6 @@ from .Pattern import Pattern as Pattern
 from .PatternAnimated import PatternAnimatorProtocol as PatternAnimatorProtocol
 from .PatternAnimated import PatternAnimated as PatternAnimated
 from .PatternMeta import PatternMeta as PatternMeta
-from .PatternTable import PatternArray as PatternArray
 from .PatternTable import PatternTableProtocol as PatternTableProtocol
 from .PatternTable import PatternTable as PatternTable
 from .PatternTableAnimated import PatternTableAnimatedProtocol as PatternTableAnimatedProtocol
