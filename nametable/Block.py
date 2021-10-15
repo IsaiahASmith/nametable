@@ -1,6 +1,9 @@
 from typing import Protocol
 from dataclasses import dataclass
 
+from numpy import ubyte, concatenate
+from numpy.typing import NDArray
+
 from nametable.PatternTable import PatternTableProtocol
 
 
@@ -15,6 +18,10 @@ class PatternTableIndexException(IndexError):
 class BlockProtocol(Protocol):
     pattern_table: PatternTableProtocol
     patterns: tuple[int, int, int, int]
+
+    @property
+    def numpy_array(self) -> NDArray[ubyte]:
+        ...
 
 
 @dataclass(frozen=True, eq=True)
@@ -31,3 +38,23 @@ class Block:
             )
         if any(pattern < 0 for pattern in self.patterns):
             raise PatternTableIndexException("Pattern indexes to Pattern Table must be positive")
+
+    @property
+    def numpy_array(self) -> NDArray[ubyte]:
+        return concatenate(
+            (
+                concatenate(
+                    (
+                        self.pattern_table.pattern_array[self.patterns[0]].numpy_array,
+                        self.pattern_table.pattern_array[self.patterns[1]].numpy_array,
+                    )
+                ),
+                concatenate(
+                    (
+                        self.pattern_table.pattern_array[self.patterns[2]].numpy_array,
+                        self.pattern_table.pattern_array[self.patterns[3]].numpy_array,
+                    )
+                ),
+            ),
+            axis=1,
+        )
