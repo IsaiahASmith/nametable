@@ -1,6 +1,6 @@
 from typing import Optional
 from pytest import fixture
-from hypothesis.strategies import builds, binary, integers, lists, composite
+from hypothesis.strategies import builds, binary, integers, lists, composite, tuples
 
 from numpy import array, ubyte
 from numpy.typing import NDArray
@@ -68,6 +68,23 @@ def pattern_table_animated(draw, min_frames: int = 0, max_frames: Optional[int] 
     tables, animator = draw(pattern_table_animated_tuple(min_size=min_frames, max_size=max_frames))
 
     return PatternTableAnimated(tables, animator)
+
+
+@composite
+def block(draw, min_size: int = 0, max_size: Optional[int] = None):
+    from nametable.Block import Block
+
+    table = draw(pattern_table(), min_size=min_size, max_size=max_size)
+    blocks = draw(
+        tuples(
+            integers(min_value=0, max_value=len(table.pattern_array)),
+            integers(min_value=0, max_value=len(table.pattern_array)),
+            integers(min_value=0, max_value=len(table.pattern_array)),
+            integers(min_value=0, max_value=len(table.pattern_array)),
+        )
+    )
+
+    return Block(table, blocks)
 
 
 @fixture
