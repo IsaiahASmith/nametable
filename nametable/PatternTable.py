@@ -8,7 +8,7 @@ from nametable.Pattern import Pattern, PatternProtocol
 
 
 class PatternTableProtocol(Protocol):
-    pattern_array: tuple[Pattern]
+    pattern_array: tuple[Pattern, ...]
 
     @property
     def numpy_array(self) -> NDArray[object_]:
@@ -17,7 +17,7 @@ class PatternTableProtocol(Protocol):
 
 @dataclass(frozen=True, eq=True)
 class PatternTable:
-    pattern_array: tuple[Pattern]
+    pattern_array: tuple[Pattern, ...]
 
     @property
     def numpy_array(self) -> NDArray[object_]:

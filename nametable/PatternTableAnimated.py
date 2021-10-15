@@ -19,7 +19,7 @@ class PatternTableAnimated:
     animator: AnimatorProtocol
 
     @property
-    def pattern_array(self) -> tuple[Pattern]:
+    def pattern_array(self) -> tuple[Pattern, ...]:
         return self.pattern_tables[self.animator.frame].pattern_array
 
     @property
