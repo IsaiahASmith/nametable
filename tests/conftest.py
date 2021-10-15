@@ -1,6 +1,6 @@
 from typing import Optional
 from pytest import fixture
-from hypothesis.strategies import builds, binary, integers, lists, composite, tuples
+from hypothesis.strategies import builds, binary, integers, lists, composite
 
 from numpy import array, ubyte
 from numpy.typing import NDArray
