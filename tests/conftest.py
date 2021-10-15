@@ -74,7 +74,7 @@ def pattern_table_animated(draw, min_frames: int = 0, max_frames: Optional[int] 
 def block(draw, min_size: int = 0, max_size: Optional[int] = None):
     from nametable.Block import Block
 
-    table = draw(pattern_table(), min_size=min_size, max_size=max_size)
+    table = draw(pattern_table(min_size=min_size, max_size=max_size))
     blocks = draw(
         tuples(
             integers(min_value=0, max_value=len(table.pattern_array)),
