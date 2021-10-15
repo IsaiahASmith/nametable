@@ -70,14 +70,6 @@ def pattern_table_animated(draw, min_frames: int = 0, max_frames: Optional[int] 
     return PatternTableAnimated(tables, animator)
 
 
-@composite
-def partially_correct_blocks(draw, min_size: int = 0, max_size: Optional[int] = None):
-    table = draw(pattern_table(min_size=min_size, max_size=max_size))
-    tiles = draw(lists(integers()))
-
-    return table, tiles
-
-
 @fixture
 def _tile_data():
     def tile_data_generator():
