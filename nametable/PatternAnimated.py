@@ -31,7 +31,7 @@ class PatternAnimated:
         return self.stack[self.animator.frame].numpy_array
 
     @property
-    def tile(self) -> PatternMeta:
+    def meta(self) -> PatternMeta:
         """
         Returns the Tile the Pattern represents.
 
@@ -40,4 +40,4 @@ class PatternAnimated:
         Tile
             The Tile the Pattern represents.
         """
-        return self.stack[self.animator.frame].tile
+        return self.stack[self.animator.frame].meta

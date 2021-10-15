@@ -88,8 +88,8 @@ def block(draw, min_size: int = 0, max_size: Optional[int] = None):
 
 
 @fixture
-def _tile_data():
-    def tile_data_generator():
+def _pattern_data():
+    def pattern_data_generator():
         yield {
             "data": bytes.fromhex("41 C2 44 48 10 20 40 80 01 02 04 08 16 21 42 87"),
             "numpy": array(
@@ -155,12 +155,12 @@ def _tile_data():
             ),
         }
 
-    return tile_data_generator()
+    return pattern_data_generator()
 
 
-@fixture(params=[f"Tile Data {index}" for index in range(4)])
-def tile_data(_tile_data) -> tuple[tuple[bytes, NDArray[ubyte]], ...]:
-    return next(_tile_data)
+@fixture(params=[f"Pattern Data {index}" for index in range(4)])
+def pattern_data(_pattern_data) -> tuple[tuple[bytes, NDArray[ubyte]], ...]:
+    return next(_pattern_data)
 
 
 @fixture

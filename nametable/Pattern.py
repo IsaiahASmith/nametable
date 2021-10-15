@@ -9,7 +9,7 @@ from nametable.PatternMeta import PatternMeta
 
 class PatternProtocol(Protocol):
     @property
-    def tile(self) -> PatternMeta:
+    def meta(self) -> PatternMeta:
         ...
 
     @property
@@ -20,27 +20,27 @@ class PatternProtocol(Protocol):
 class Pattern:
     _patterns = WeakKeyDictionary()
 
-    def __new__(cls, tile: PatternMeta):
+    def __new__(cls, meta: PatternMeta):
         """
         As Tiles will often be copied and are immutable, this method ensures that only
         a single copy will be stored inside memory.
 
         Parameters
         ----------
-        tile : PatternMeta
+        meta : PatternMeta
             The Tile to be hashed.
         """
-        if tile not in cls._patterns:
+        if meta not in cls._patterns:
             instance = super().__new__(cls)
-            cls._patterns[tile] = instance
-        return cls._patterns[tile]
+            cls._patterns[meta] = instance
+        return cls._patterns[meta]
 
-    def __init__(self, tile: PatternMeta):
-        self._tile = tile
+    def __init__(self, meta: PatternMeta):
+        self._meta = meta
         self._numpy_array = None
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self._tile})"
+        return f"{self.__class__.__name__}({self._meta})"
 
     @classmethod
     def from_numpy_array(cls, array: NDArray[ubyte]):
@@ -70,11 +70,11 @@ class Pattern:
         This implementation will cache the result, which can dramatically reduce math operations.
         """
         if self._numpy_array is None:
-            self._numpy_array = self.tile.numpy_array
+            self._numpy_array = self.meta.numpy_array
         return self._numpy_array
 
     @property
-    def tile(self) -> PatternMeta:
+    def meta(self) -> PatternMeta:
         """
         Returns the Tile the Pattern represents.
 
@@ -85,6 +85,6 @@ class Pattern:
 
         Notes
         -----
-        The underlying `_tile` should never be changed.
+        The underlying `_meta` should never be changed.
         """
-        return self._tile
+        return self._meta
