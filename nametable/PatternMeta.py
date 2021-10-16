@@ -31,7 +31,7 @@ class PatternMeta:
 
     Notes
     -----
-    For large creation of patterns, it is recommended that ``nametable.Pattern.Pattern``
+    For large creation of patterns, it is recommended that :class:`~nametable.Pattern.Pattern`
     should be used instead.  Pattern will store multiple copies of the same pattern as
     one type, and enable more sophisticated use throughout the program.
     Specifically, it is easier to extend, due to not being immutable.
