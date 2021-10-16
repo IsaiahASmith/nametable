@@ -46,7 +46,8 @@ class Animator:
 
     Attributes
     ----------
-    frame: The current frame that the :class:`~nametable.Animator.AnimatedProtocol` is on.
+    frame: int
+        The current frame that the :class:`~nametable.Animator.AnimatedProtocol` is on.
 
     See Also
     --------
