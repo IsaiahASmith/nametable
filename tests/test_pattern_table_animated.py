@@ -16,10 +16,3 @@ def test_animation(pattern_table_animated):
     for frame in range(len(pattern_table_animated.pattern_tables)):
         pattern_table_animated.animator.frame = frame
         assert pattern_table_animated.pattern_array == pattern_table_animated.pattern_tables[frame].pattern_array
-
-
-@given(pattern_table_animated())
-def test_numpy_array_shape(pattern_table_animated):
-    for frame in range(len(pattern_table_animated.pattern_tables)):
-        pattern_table_animated.animator.frame = frame
-        assert pattern_table_animated.numpy_array.shape[0] == 0x10
