@@ -10,3 +10,5 @@ from .PatternTable import PatternTableProtocol as PatternTableProtocol
 from .PatternTable import PatternTable as PatternTable
 from .PatternTableAnimated import PatternTableAnimatedProtocol as PatternTableAnimatedProtocol
 from .PatternTableAnimated import PatternTableAnimated as PatternTableAnimated
+from .Nametable import Nametable as Nametable
+from .Nametable import NametableProtocol as NametableProtocol
