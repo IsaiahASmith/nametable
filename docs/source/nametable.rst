@@ -1,4 +1,4 @@
-nametable package
+Nametable Package
 =================
 
 Submodules
