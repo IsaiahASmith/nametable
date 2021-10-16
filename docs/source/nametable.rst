@@ -4,7 +4,7 @@ nametable package
 Submodules
 ----------
 
-nametable.Animator module
+Animator Module
 -------------------------
 
 .. automodule:: nametable.Animator
@@ -12,7 +12,23 @@ nametable.Animator module
    :undoc-members:
    :show-inheritance:
 
-nametable.Pattern module
+Block Module
+-------------------------
+
+.. automodule:: nametable.Block
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Nametable Module
+-------------------------
+
+.. automodule:: nametable.Nametable
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Pattern Module
 ------------------------
 
 .. automodule:: nametable.Pattern
@@ -20,7 +36,7 @@ nametable.Pattern module
    :undoc-members:
    :show-inheritance:
 
-nametable.PatternAnimated module
+PatternAnimated Module
 --------------------------------
 
 .. automodule:: nametable.PatternAnimated
@@ -28,7 +44,7 @@ nametable.PatternAnimated module
    :undoc-members:
    :show-inheritance:
 
-nametable.PatternMeta module
+PatternMeta Module
 ----------------------------
 
 .. automodule:: nametable.PatternMeta
@@ -36,7 +52,7 @@ nametable.PatternMeta module
    :undoc-members:
    :show-inheritance:
 
-nametable.PatternTable module
+PatternTable Module
 -----------------------------
 
 .. automodule:: nametable.PatternTable
@@ -44,7 +60,7 @@ nametable.PatternTable module
    :undoc-members:
    :show-inheritance:
 
-nametable.PatternTableAnimated module
+PatternTableAnimated Module
 -------------------------------------
 
 .. automodule:: nametable.PatternTableAnimated
