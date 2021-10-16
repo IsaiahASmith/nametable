@@ -1,9 +1,6 @@
 from typing import Protocol
 from dataclasses import dataclass
 
-from numpy import object_
-from numpy.typing import NDArray
-
 from nametable.Animator import AnimatedProtocol, AnimatorProtocol
 from nametable.PatternTable import PatternTableProtocol
 from nametable.Pattern import Pattern
