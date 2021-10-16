@@ -21,7 +21,3 @@ class PatternTableAnimated:
     @property
     def pattern_array(self) -> tuple[Pattern, ...]:
         return self.pattern_tables[self.animator.frame].pattern_array
-
-    @property
-    def numpy_array(self) -> NDArray[object_]:
-        return self.pattern_tables[self.animator.frame].numpy_array
