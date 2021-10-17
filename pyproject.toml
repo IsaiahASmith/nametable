@@ -3,7 +3,7 @@ name = "nametable"
 version = "0.1.0"
 description = ""
 authors = ["TheJoeSmo <joesmo.joesmo12@gmail.com>"]
-readme = "README.md"
+readme = "README.rst"
 license = "GPL3"
 include = [
     "LICENSE",

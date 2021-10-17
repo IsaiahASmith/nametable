@@ -1,10 +1,25 @@
-.. nametable documentation master file, created by
-   sphinx-quickstart on Fri Oct  1 01:38:26 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
+=====================================
 Welcome to Nametable's Documentation!
 =====================================
+
+Release |release| (`What's new? <changelog>`_).
+
+.. include:: ../../README.rst
+   :start-after: purpose-statement-begin
+   :end-before: purpose-statement-end
+
+Getting Started
+===============
+``nametable`` is created directly from Python and is 
+`hosted on PyPI <https://pypi.org/project/nametabe/>`_.
+The recommended installation method is installing it with 
+`pip <https://pip.pypa.io/en/stable/>`_ into a `virtualenv <https://hynek.me/articles/virtualenv-lives/>`_:
+
+.. code-block:: console
+
+   $ python -m pip install nametable
+
+
 
 .. toctree::
    :maxdepth: 2
@@ -12,6 +27,12 @@ Welcome to Nametable's Documentation!
 
    modules
 
+.. toctree::
+   :maxdepth: 1
+
+   license
+   contributing
+   changelog
 
 
 Indices and tables

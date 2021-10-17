@@ -1,1 +1,0 @@
-This is a template repository for easy creation of Poetry projects.
