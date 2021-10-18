@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "nametable"
 version = "0.1.0"
-description = ""
+description = "An OOP approach to represent nametables on the NES"
 authors = ["TheJoeSmo <joesmo.joesmo12@gmail.com>"]
 readme = "README.rst"
 license = "GPL3"
