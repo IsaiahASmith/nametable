@@ -22,15 +22,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      # Load cached dependencies if they exist
-      - name: Load cached dependencies
-        id: cache-venv
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements*.txt') }}
-          restore-keys: ${{ runner.os }}-venv-
-      
       - name: Install Dependencies
         run: python -m venv ./.venv && . ./.venv/bin/activate && pip install -r requirements-dev.txt
         if: steps.cache-venv.outputs.cache-hit != 'true'
