@@ -10,26 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Check out the repo and set up Python
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
 
-      # Load cached pip dependencies if they exist
-      - name: Load cached pip dependencies
-        id: cached-pip-dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: pip-cache-${{ runner.os }}-${{ hashFiles('requirements*.txt') }}
-
-      # Install dependencies
-      - name: Install dependencies
-        if: steps.cached-pip-dependencies.outputs.cache-hit != 'true'
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -r requirements-dev.txt
+      - name: Install Dependencies
+        run: python -m venv ./.venv && . ./.venv/bin/activate && pip install -r requirements-dev.txt
+        if: steps.cache-venv.outputs.cache-hit != 'true'
 
       # Publish to PyPI
       - name: Publish to PyPI

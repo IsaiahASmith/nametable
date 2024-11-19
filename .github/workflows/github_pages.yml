@@ -17,32 +17,30 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       # Check out the repo and set up Python
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
       # Load cached dependencies if they exist
-      - name: Load cached pip dependencies
-        id: cached-pip-dependencies
-        uses: actions/cache@v2
+      - name: Load cached dependencies
+        id: cache-venv
+        uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: pip-cache-${{ runner.os }}-${{ hashFiles('requirements*.txt') }}
+          key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+          ${{ runner.os }}-venv-
       
-      # Install dependencies
-      - name: Install dependencies
-        if: steps.cached-pip-dependencies.outputs.cache-hit != 'true'
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -r requirements-dev.txt
+      - name: Install Dependencies
+        run: python -m venv ./.venv && . ./.venv/bin/activate && pip install -r requirements-dev.txt
+        if: steps.cache-venv.outputs.cache-hit != 'true'
 
       # Build documentation
       - name: Build Documentation
         run: |
-          python -m sphinx-apidoc -o docs/source nametable/
-          python -m sphinx-build docs/source public -b dirhtml
+          sphinx-apidoc -o docs/source nametable/
+          sphinx-build docs/source public -b dirhtml
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
