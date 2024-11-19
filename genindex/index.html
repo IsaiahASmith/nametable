@@ -1,476 +1,409 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Index &#8212; Nametable 0.1.0 documentation</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <link rel="shortcut icon" href="../_static/nametable_logo.png"/>
+    <script src="../_static/documentation_options.js?v=b2731ba4"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="icon" href="../_static/nametable_logo.png"/>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="../search/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
-
-  <div id="navbar-start">
-    
-    
-
-<a class="navbar-brand" href="../">
-  <img src="../_static/nametable_logo.png" class="logo" alt="logo">
-</a>      
-
-
-    
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
-    <div id="navbar-center" class="mr-auto">
-      
-      <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../modules/">
-  nametable
- </a>
-</li>
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../license/">
-  License
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../contributing/">
-  How To Contribute
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../changelog/">
-  Changelog
- </a>
-</li>
-
+  
+  <dialog id="pst-search-dialog">
     
-</ul>
-      </div>
-      
-    </div>
+<form class="bd-search d-flex align-items-center"
+      action="../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
 
-    <div id="navbar-end">
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/TheJoeSmo/nametable" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
-        </li>
-      </ul>
-      </div>
-      
-    </div>
-  </div>
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-    </nav>
-    
 
-    <div class="container-xl">
-      <div class="row">
-          
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search/" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <div class="bd-toc-item active">
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="index">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/nametable_logo.png" class="logo__image only-light" alt="Nametable 0.1.0 documentation - Home"/>
+    <img src="../_static/nametable_logo.png" class="logo__image only-dark pst-js-only" alt="Nametable 0.1.0 documentation - Home"/>
+  
+  
+</a></div>
     
   </div>
-</nav>
-            </div>
-            
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/">
+    nametable
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../license/">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributing/">
+    How To Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../changelog/">
+    Changelog
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
           
 
-          
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            
-          </div>
-          
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
 
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
           
           
-            
           
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+          
+          
+          
+          
+          
+          <a href="https://github.com/TheJoeSmo/nametable" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/">
+    nametable
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../license/">
+    License
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributing/">
+    How To Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../changelog/">
+    Changelog
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TheJoeSmo/nametable" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
               
-              <div>
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
 
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#A"><strong>A</strong></a>
- | <a href="#B"><strong>B</strong></a>
- | <a href="#D"><strong>D</strong></a>
- | <a href="#F"><strong>F</strong></a>
- | <a href="#H"><strong>H</strong></a>
- | <a href="#M"><strong>M</strong></a>
- | <a href="#N"><strong>N</strong></a>
- | <a href="#P"><strong>P</strong></a>
- | <a href="#S"><strong>S</strong></a>
- | <a href="#W"><strong>W</strong></a>
  
 </div>
-<h2 id="A">A</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.Animator.AnimatedProtocol">AnimatedProtocol (class in nametable.Animator)</a>
-</li>
-      <li><a href="../nametable/#nametable.Animator.AnimatedProtocol.animator">animator (AnimatedProtocol attribute)</a>
-</li>
-      <li><a href="../nametable/#nametable.Animator.Animator">Animator (class in nametable.Animator)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.PatternAnimated.PatternAnimated.animator">animator (PatternAnimated attribute)</a>
-
-      <ul>
-        <li><a href="../nametable/#nametable.PatternAnimated.PatternAnimatedProtocol.animator">(PatternAnimatedProtocol attribute)</a>
-</li>
-        <li><a href="../nametable/#nametable.PatternTableAnimated.PatternTableAnimated.animator">(PatternTableAnimated attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="../nametable/#nametable.Animator.AnimatorProtocol">AnimatorProtocol (class in nametable.Animator)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="B">B</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.Block.Block">Block (class in nametable.Block)</a>
-</li>
-      <li><a href="../nametable/#nametable.Block.BlockInvalidSizeException">BlockInvalidSizeException</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.Block.BlockProtocol">BlockProtocol (class in nametable.Block)</a>
-</li>
-      <li><a href="../nametable/#nametable.Nametable.Nametable.blocks">blocks (Nametable attribute)</a>
-
-      <ul>
-        <li><a href="../nametable/#nametable.Nametable.NametableProtocol.blocks">(NametableProtocol attribute)</a>
-</li>
-      </ul></li>
-  </ul></td>
-</tr></table>
-
-<h2 id="D">D</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.PatternMeta.PatternMeta.data">data (PatternMeta attribute)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="F">F</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.Animator.Animator.frame">frame (Animator attribute)</a>
-
-      <ul>
-        <li><a href="../nametable/#nametable.Animator.AnimatorProtocol.frame">(AnimatorProtocol attribute)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.Pattern.Pattern.from_numpy_array">from_numpy_array() (Pattern class method)</a>
-
-      <ul>
-        <li><a href="../nametable/#nametable.PatternMeta.PatternMeta.from_numpy_array">(PatternMeta class method)</a>
-</li>
-      </ul></li>
-  </ul></td>
-</tr></table>
-
-<h2 id="H">H</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.PatternMeta.PatternMeta.HEIGHT">HEIGHT (PatternMeta attribute)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="M">M</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.Pattern.Pattern.meta">meta (Pattern property)</a>
-
-      <ul>
-        <li><a href="../nametable/#nametable.PatternAnimated.PatternAnimated.meta">(PatternAnimated property)</a>
-</li>
-        <li><a href="../nametable/#nametable.Pattern.PatternProtocol.meta">(PatternProtocol property)</a>
-</li>
-      </ul></li>
-      <li>
-    module
-
-      <ul>
-        <li><a href="../nametable/#module-nametable">nametable</a>
-</li>
-        <li><a href="../nametable/#module-nametable.Animator">nametable.Animator</a>
-</li>
-        <li><a href="../nametable/#module-nametable.Block">nametable.Block</a>
-</li>
-        <li><a href="../nametable/#module-nametable.Nametable">nametable.Nametable</a>
-</li>
-        <li><a href="../nametable/#module-nametable.Pattern">nametable.Pattern</a>
-</li>
-        <li><a href="../nametable/#module-nametable.PatternAnimated">nametable.PatternAnimated</a>
-</li>
-        <li><a href="../nametable/#module-nametable.PatternMeta">nametable.PatternMeta</a>
-</li>
-        <li><a href="../nametable/#module-nametable.PatternTable">nametable.PatternTable</a>
-</li>
-        <li><a href="../nametable/#module-nametable.PatternTableAnimated">nametable.PatternTableAnimated</a>
-</li>
-      </ul></li>
-  </ul></td>
-</tr></table>
-
-<h2 id="N">N</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    nametable
-
-      <ul>
-        <li><a href="../nametable/#module-nametable">module</a>
-</li>
-      </ul></li>
-      <li><a href="../nametable/#nametable.Nametable.Nametable">Nametable (class in nametable.Nametable)</a>
-</li>
-      <li>
-    nametable.Animator
-
-      <ul>
-        <li><a href="../nametable/#module-nametable.Animator">module</a>
-</li>
-      </ul></li>
-      <li>
-    nametable.Block
-
-      <ul>
-        <li><a href="../nametable/#module-nametable.Block">module</a>
-</li>
-      </ul></li>
-      <li>
-    nametable.Nametable
-
-      <ul>
-        <li><a href="../nametable/#module-nametable.Nametable">module</a>
-</li>
-      </ul></li>
-      <li>
-    nametable.Pattern
-
-      <ul>
-        <li><a href="../nametable/#module-nametable.Pattern">module</a>
-</li>
-      </ul></li>
-      <li>
-    nametable.PatternAnimated
-
-      <ul>
-        <li><a href="../nametable/#module-nametable.PatternAnimated">module</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    nametable.PatternMeta
-
-      <ul>
-        <li><a href="../nametable/#module-nametable.PatternMeta">module</a>
-</li>
-      </ul></li>
-      <li>
-    nametable.PatternTable
-
-      <ul>
-        <li><a href="../nametable/#module-nametable.PatternTable">module</a>
-</li>
-      </ul></li>
-      <li>
-    nametable.PatternTableAnimated
-
-      <ul>
-        <li><a href="../nametable/#module-nametable.PatternTableAnimated">module</a>
-</li>
-      </ul></li>
-      <li><a href="../nametable/#nametable.Nametable.NametableProtocol">NametableProtocol (class in nametable.Nametable)</a>
-</li>
-      <li><a href="../nametable/#nametable.Block.Block.numpy_array">numpy_array (Block property)</a>
-
-      <ul>
-        <li><a href="../nametable/#nametable.Block.BlockProtocol.numpy_array">(BlockProtocol property)</a>
-</li>
-        <li><a href="../nametable/#nametable.Pattern.Pattern.numpy_array">(Pattern property)</a>
-</li>
-        <li><a href="../nametable/#nametable.PatternAnimated.PatternAnimated.numpy_array">(PatternAnimated property)</a>
-</li>
-        <li><a href="../nametable/#nametable.PatternMeta.PatternMeta.numpy_array">(PatternMeta property)</a>
-</li>
-        <li><a href="../nametable/#nametable.Pattern.PatternProtocol.numpy_array">(PatternProtocol property)</a>
-</li>
-      </ul></li>
-  </ul></td>
-</tr></table>
-
-<h2 id="P">P</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.Pattern.Pattern">Pattern (class in nametable.Pattern)</a>
-</li>
-      <li><a href="../nametable/#nametable.PatternTable.PatternTable.pattern_array">pattern_array (PatternTable attribute)</a>
-
-      <ul>
-        <li><a href="../nametable/#nametable.PatternTableAnimated.PatternTableAnimated.pattern_array">(PatternTableAnimated property)</a>
-</li>
-        <li><a href="../nametable/#nametable.PatternTableAnimated.PatternTableAnimatedProtocol.pattern_array">(PatternTableAnimatedProtocol attribute)</a>
-</li>
-        <li><a href="../nametable/#nametable.PatternTable.PatternTableProtocol.pattern_array">(PatternTableProtocol attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="../nametable/#nametable.Block.Block.pattern_table">pattern_table (Block attribute)</a>
-
-      <ul>
-        <li><a href="../nametable/#nametable.Block.BlockProtocol.pattern_table">(BlockProtocol attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="../nametable/#nametable.PatternTableAnimated.PatternTableAnimated.pattern_tables">pattern_tables (PatternTableAnimated attribute)</a>
-</li>
-      <li><a href="../nametable/#nametable.PatternAnimated.PatternAnimated">PatternAnimated (class in nametable.PatternAnimated)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.PatternAnimated.PatternAnimatedProtocol">PatternAnimatedProtocol (class in nametable.PatternAnimated)</a>
-</li>
-      <li><a href="../nametable/#nametable.PatternMeta.PatternMeta">PatternMeta (class in nametable.PatternMeta)</a>
-</li>
-      <li><a href="../nametable/#nametable.Pattern.PatternProtocol">PatternProtocol (class in nametable.Pattern)</a>
-</li>
-      <li><a href="../nametable/#nametable.Block.Block.patterns">patterns (Block attribute)</a>
-
-      <ul>
-        <li><a href="../nametable/#nametable.Block.BlockProtocol.patterns">(BlockProtocol attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="../nametable/#nametable.PatternTable.PatternTable">PatternTable (class in nametable.PatternTable)</a>
-</li>
-      <li><a href="../nametable/#nametable.PatternTableAnimated.PatternTableAnimated">PatternTableAnimated (class in nametable.PatternTableAnimated)</a>
-</li>
-      <li><a href="../nametable/#nametable.PatternTableAnimated.PatternTableAnimatedProtocol">PatternTableAnimatedProtocol (class in nametable.PatternTableAnimated)</a>
-</li>
-      <li><a href="../nametable/#nametable.Block.PatternTableIndexException">PatternTableIndexException</a>
-</li>
-      <li><a href="../nametable/#nametable.PatternTable.PatternTableProtocol">PatternTableProtocol (class in nametable.PatternTable)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="S">S</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.PatternAnimated.PatternAnimated.stack">stack (PatternAnimated attribute)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="W">W</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="../nametable/#nametable.PatternMeta.PatternMeta.WIDTH">WIDTH (PatternMeta attribute)</a>
-</li>
-  </ul></td>
-</tr></table>
 
 
-
-              </div>
+                </article>
               
               
-              <div class='prev-next-bottom'>
-                
-
-              </div>
               
-          </main>
-          
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
-      </div>
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2021, TheJoeSmo.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+</p></div>
+      
+    </div>
+  
+</div>
 
-  <footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    
-    <div class="footer-item">
-      <p class="copyright">
-    &copy; Copyright 2021, TheJoeSmo.<br/>
-</p>
-    </div>
-    
-    <div class="footer-item">
-      <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
-</p>
-    </div>
-    
-  </div>
-</footer>
+  </footer>
   </body>
 </html>
