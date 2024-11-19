@@ -8,11 +8,11 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     steps:
-      # Check out the repo and set up python
+      # Check out the repo and set up Python
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
 
-      # Load pip if the cache exists
+      # Load cached pip dependencies if they exist
       - uses: actions/cache@v2
         with:
           path: ~/.cache/pip
@@ -20,10 +20,12 @@ jobs:
           restore-keys: ${{ runner.os }}-pip
 
       # Install and run linters
-      - run: python -m pip install black flake8
+      - run: python -m pip install --upgrade pip
+      - run: pip install black flake8
       - run: |
-          flake8 .  --max-line-length 120  --ignore=E203  --per-file-ignores="__init__.py:F401"
+          flake8 . --max-line-length 120 --ignore=E203 --per-file-ignores="__init__.py:F401"
           black . --check --line-length 120
+
   test:
     needs: linting
     strategy:
@@ -36,38 +38,28 @@ jobs:
         shell: bash
     runs-on: ${{ matrix.os }}
     steps:
-      # Check out the repo and set up python
+      # Check out the repo and set up Python
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
 
-      # Install Poetry
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-
-      # Load cached venv if it exists
-      - name: Load cached venv
-        id: cached-poetry-dependencies
+      # Load cached pip dependencies if they exist
+      - name: Load cached pip dependencies
+        id: cached-pip-dependencies
         uses: actions/cache@v2
         with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+          path: ~/.cache/pip
+          key: pip-cache-${{ runner.os }}-${{ hashFiles('requirements*.txt') }}
 
-      # Install dependencies if cache does not exist
+      # Install dependencies
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root
-
-      # Install root project
-      - name: Install library
-        run: poetry install --no-interaction
+        if: steps.cached-pip-dependencies.outputs.cache-hit != 'true'
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
 
       # Run test suite
       - name: Run tests
-        run: |
-          source $VENV
-          pytest tests/ --exitfirst --verbose --failed-first
+        run: pytest tests/ --exitfirst --verbose --failed-first
