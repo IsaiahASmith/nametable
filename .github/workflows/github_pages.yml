@@ -41,8 +41,8 @@ jobs:
       # Build documentation
       - name: Build Documentation
         run: |
-          sphinx-apidoc -o docs/source nametable/
-          sphinx-build docs/source public -b dirhtml
+          python -m sphinx-apidoc -o docs/source nametable/
+          python -m sphinx-build docs/source public -b dirhtml
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages

@@ -62,4 +62,4 @@ jobs:
 
       # Run test suite
       - name: Run tests
-        run: pytest tests/ --exitfirst --verbose --failed-first
+        run: python -m pytest tests/ --exitfirst --verbose --failed-first
