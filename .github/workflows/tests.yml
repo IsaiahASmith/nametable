@@ -46,4 +46,6 @@ jobs:
 
       # Run test suite
       - name: Run tests
-        run: python -m pytest tests/ --exitfirst --verbose --failed-first
+        run: |
+          source .venv/bin/activate
+          python -m pytest tests/ --exitfirst --verbose --failed-first
