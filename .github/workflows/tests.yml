@@ -19,8 +19,7 @@ jobs:
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements*.txt') }}
-          restore-keys: |
-          ${{ runner.os }}-venv-
+          restore-keys: ${{ runner.os }}-venv-
       
       - name: Install Dependencies
         run: python -m venv ./.venv && . ./.venv/bin/activate && pip install -r requirements-dev.txt
